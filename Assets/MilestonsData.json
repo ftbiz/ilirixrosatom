@@ -1,0 +1,58 @@
+﻿{
+  "milestons" : [
+    {
+      "id": "122345",
+      "name": "Веха 1",
+      "percent": 60,
+      "position": [
+        23,
+        15
+      ],
+      "color": [
+        23,
+        221,
+        16,
+        125
+      ],
+      "allTasksCount": 238,
+      "doneTasksCount": 15,
+      "completionDate":"12875687"
+    },
+    {
+      "id": "5600671",
+      "name": "Веха 2",
+      "percent": 34,
+      "position": [
+        48,
+        11
+      ],
+      "color": [
+        1,
+        33,
+        3,
+        56
+      ],
+      "allTasksCount": 421,
+      "doneTasksCount": 87,
+      "completionDate": "58723656"
+    },
+    {
+      "id": "8787332",
+      "name": "Веха 3",
+      "percent": 89,
+      "position": [
+        98,
+        74
+      ],
+      "color": [
+        56,
+        147,
+        63,
+        173
+      ],
+      "allTasksCount": 54,
+      "doneTasksCount": 23,
+      "completionDate": "8475920"
+    }
+  ]
+}

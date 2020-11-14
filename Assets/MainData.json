@@ -1,0 +1,156 @@
+﻿{
+  "milestonsTasks": [
+	{
+	  "id": "122345",
+	  "name": "Веха 1",
+	  "chains":
+	  [
+		{
+		  "id" : "3859817",
+		  "description" : "Строительство здания В",
+		  "tasks": [
+			{
+			  "id": "122345",
+			  "name": "Работа 1",
+			  "type": "Закупка строительных материалов",
+			  "startDate": 23523523,
+			  "dayBeforeCost": 20500,
+			  "dayLaterCost": 2500,
+			  "defaultDuration": 5,
+			  "minDuration": 3,
+			  "decreasingDurationCost": 23000,
+			  "connectedTasks": [
+				"3856784"
+			  ]
+			},
+			{
+			  "id": "75683746",
+			  "name": "Работа 2",
+			  "type": "Подготовка документации",
+			  "startDate": 345683,
+			  "dayBeforeCost": 367788,
+			  "dayLaterCost": 86734,
+			  "defaultDuration": 10,
+			  "minDuration": 3,
+			  "decreasingDurationCost": 67349,
+			  "connectedTasks": [
+			  ]
+			},
+			{
+			  "id": "8345826",
+			  "name": "Работа 3",
+			  "type": "Компенсирующие мероприятия",
+			  "startDate": 644575,
+			  "dayBeforeCost": 46354,
+			  "dayLaterCost": 25626,
+			  "defaultDuration": 32,
+			  "minDuration": 25,
+			  "decreasingDurationCost": 34657,
+			  "connectedTasks": [
+			  ]
+			}
+		  ]
+		},
+		{
+		  "id": "2768974",
+		  "description": "Строительство здания A",
+		  "tasks": [
+			{
+			  "id": "3583677",
+			  "name": "Работа 1",
+			  "type": "Закупка строительных материалов",
+			  "startDate": 356367,
+			  "dayBeforeCost": 37356,
+			  "dayLaterCost": 3763,
+			  "defaultDuration": 35,
+			  "minDuration": 31,
+			  "decreasingDurationCost": 26626,
+			  "connectedTasks": [
+				
+			  ]
+			},
+			{
+			  "id": "436723",
+			  "name": "Работа 2",
+			  "type": "Подготовка документации",
+			  "startDate": 35635,
+			  "dayBeforeCost": 257,
+			  "dayLaterCost": 2373,
+			  "defaultDuration": 42,
+			  "minDuration": 3,
+			  "decreasingDurationCost": 2562,
+			  "connectedTasks": [
+			  ]
+			},
+			{
+			  "id": "24657",
+			  "name": "Работа 3",
+			  "type": "Компенсирующие мероприятия",
+			  "startDate": 67367,
+			  "dayBeforeCost": 234,
+			  "dayLaterCost": 2646,
+			  "defaultDuration": 22,
+			  "minDuration": 12,
+			  "decreasingDurationCost": 45145,
+			  "connectedTasks": [
+			  ]
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "id": "094627568",
+	  "name": "Веха 2",
+	  "chain": [
+		{
+		  "id": "8724567",
+		  "description": "Согласование проекта с заказчиком",
+		  "tasks": [
+			{
+			  "id": "2473563",
+			  "name": "Работа 1",
+			  "type": "Закупка строительных материалов",
+			  "startDate": 383863,
+			  "dayBeforeCost": 3736,
+			  "dayLaterCost": 3737,
+			  "defaultDuration": 2,
+			  "minDuration": 1,
+			  "decreasingDurationCost": 2626,
+			  "connectedTasks": [
+				
+			  ]
+			},
+			{
+			  "id": "2467657356",
+			  "name": "Работа 2",
+			  "type": "Подготовка документации",
+			  "startDate": 3867836,
+			  "dayBeforeCost": 3565,
+			  "dayLaterCost": 265,
+			  "defaultDuration": 56,
+			  "minDuration": 23,
+			  "decreasingDurationCost": 25473,
+			  "connectedTasks": [
+			  ]
+			},
+			{
+			  "id": "26254",
+			  "name": "Работа 3",
+			  "type": "Компенсирующие мероприятия",
+			  "startDate": 2566256,
+			  "dayBeforeCost": 2564,
+			  "dayLaterCost": 2564,
+			  "defaultDuration": 34,
+			  "minDuration": 13,
+			  "decreasingDurationCost": 254756,
+			  "connectedTasks": [
+			  ]
+			}
+		  ]
+		}
+	  ]
+	}
+	
+  ]
+}
