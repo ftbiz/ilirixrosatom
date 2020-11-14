@@ -1,32 +1,46 @@
-﻿using System.IO;
-using Newtonsoft.Json;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GraphVisual
 {
     public class GraphVisualizer : MonoBehaviour
     {
-        public string milestonesFileName = "Milestones.json";
+        public Vector3 defaultStartPosition;
+        public float distanceBetweenChains;
 
-        private void Awake()
+        public int defaultTaskDuration;
+
+        public GameObject pointPrefab;
+        public GameObject taskPrefab;
+
+        private Milestones milestones;
+
+        public void Init(Milestones milestones)
         {
-            var path = Path.Combine(Application.streamingAssetsPath, milestonesFileName);
-            Debug.Log("path = " + path);
-            var milestones = ReadMilestonesData(path);
-            Debug.Log("milestones.milestones.Length = " + milestones.milestones.Length);
+            this.milestones = milestones;
         }
 
-        private Milestones ReadMilestonesData(string path)
+        public void GenerateGraph()
         {
-            if (File.Exists(path))
+            if (milestones == null)
             {
-                var data = File.ReadAllText(path);
-                var milestones = JsonConvert.DeserializeObject<Milestones>(data);
-                return milestones;
+                Debug.LogWarning("Milestones are empty.");
+                return;
             }
+            
+            foreach (var milestone in milestones.milestones)
+            {
+                var chain = milestone.chain;
 
-            Debug.LogWarning("Can't find path with data.");
-            return null;
+                if (chain != null)
+                {
+                    GenerateChain(chain);
+                }
+            }
+        }
+
+        private void GenerateChain(MilestoneTask[] milestoneTasks)
+        {
+            
         }
     }
 }
