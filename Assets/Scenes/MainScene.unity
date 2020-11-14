@@ -359,6 +359,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0f7ecba862448291468dbac6aac99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultStartPosition: {x: 0, y: 0, z: 0}
+  distanceBetweenChains: 1
+  defaultTaskDuration: 2
+  pointPrefab: {fileID: 638564554901827260, guid: 362b8ab85151e6442b50d030e16e5214,
+    type: 3}
+  taskPrefab: {fileID: 329955811809102134, guid: 9a83f94f81de568449bcadfdff2d503e,
+    type: 3}
 --- !u!4 &1356956568
 Transform:
   m_ObjectHideFlags: 0
