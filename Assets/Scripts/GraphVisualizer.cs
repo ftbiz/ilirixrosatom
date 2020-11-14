@@ -1,24 +1,27 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace GraphVisual
 {
     public class GraphVisualizer : MonoBehaviour
     {
-        public string path = "";
+        public string milestonesFileName = "Milestones.json";
 
         private void Awake()
         {
-            var milestones = ReadMilestonesData();
+            var path = Path.Combine(Application.streamingAssetsPath, milestonesFileName);
+            Debug.Log("path = " + path);
+            var milestones = ReadMilestonesData(path);
+            Debug.Log("milestones.milestones.Length = " + milestones.milestones.Length);
         }
 
-        private List<Milestone> ReadMilestonesData()
+        private Milestones ReadMilestonesData(string path)
         {
             if (File.Exists(path))
             {
                 var data = File.ReadAllText(path);
-                var milestones = JsonUtility.FromJson<List<Milestone>>(data);
+                var milestones = JsonConvert.DeserializeObject<Milestones>(data);
                 return milestones;
             }
 
