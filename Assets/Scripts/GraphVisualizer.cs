@@ -66,7 +66,7 @@ namespace GraphVisual
 
                     startPoint = endPoint;
                     
-                    allTasks.Add(taskItem);
+                    allTasks.Add(taskItem); 
                 }
             }
         }

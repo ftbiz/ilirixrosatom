@@ -14,6 +14,12 @@ namespace GraphVisual
             id = milestoneTask.id;
             this.startPoint = startPoint;
             this.endPoint = endPoint;
+            
+            Debug.Log("startPoint = " + startPoint);
+            Debug.Log("endPoint = " + endPoint);
+            var centerPosX = startPoint.x + Mathf.Abs(endPoint.x - startPoint.x) / 2;
+            Debug.Log("centerPosX = " + centerPosX);
+            transform.position = startPoint;
         }
     }
 }
