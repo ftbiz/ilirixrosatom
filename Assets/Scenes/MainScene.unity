@@ -366,6 +366,8 @@ MonoBehaviour:
     type: 3}
   taskPrefab: {fileID: 329955811809102134, guid: 9a83f94f81de568449bcadfdff2d503e,
     type: 3}
+  LinePrefab: {fileID: 2560348464958097921, guid: 007f117f3db882241a80cb8bdf6a7d13,
+    type: 3}
 --- !u!4 &1356956568
 Transform:
   m_ObjectHideFlags: 0
