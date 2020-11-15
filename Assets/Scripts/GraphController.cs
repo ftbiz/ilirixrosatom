@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace GraphVisual
 {
@@ -9,33 +11,74 @@ namespace GraphVisual
         public string milestonesFileName = "Milestones.json";
         public GraphVisualizer graphVisualizer;
 
-        private Milestones milestones;
+        private Milestone milestones;
 
-        private void Awake()
+        private bool fileDownloaded = false;
+        private string fileText;
+
+        private IEnumerator Start()
         {
-            var path = Path.Combine(Application.streamingAssetsPath, milestonesFileName);
-            Debug.Log("path = " + path);
-            milestones = ReadMilestonesData(path);
+            var url = Path.Combine(Application.streamingAssetsPath, milestonesFileName);
+
+            Debug.Log("path = " + url);
+            GetMilestonesFile(url);
+
+            yield return new WaitUntil(() => fileDownloaded);
+
+            ReadMilestonesData(fileText);
 
             graphVisualizer.Init(milestones);
-        }
 
-        private void Start()
-        {
             graphVisualizer.GenerateGraph();
         }
 
-        private Milestones ReadMilestonesData(string path)
+        private void GetMilestonesFile(string url)
         {
-            if (File.Exists(path))
+            
+#if PLATFORM_WEBGL && !UNITY_EDITOR
+            StartCoroutine(LoadStreamingAsset(url));
+#else 
+            if (File.Exists(url))
             {
-                var data = File.ReadAllText(path);
-                var milestones = JsonConvert.DeserializeObject<Milestones>(data);
-                return milestones;
+                fileText = File.ReadAllText(url);
             }
+            else
+            {
+                Debug.LogWarning("Can't find path with data.");
+                return;
+            }
+            fileDownloaded = true;
+#endif
+            
+        }
 
-            Debug.LogWarning("Can't find path with data.");
-            return null;
+        private void ReadMilestonesData(string data)
+        {
+            Debug.Log("data = " + data);
+            milestones = JsonUtility.FromJson<Milestone>(data);
+            Debug.Log("milestones.milestones.Count = " + milestones);
+        }
+
+        IEnumerator LoadStreamingAsset(string url)
+        {
+            if (url.Contains("://") || url.Contains(":///"))
+            {
+                var www = UnityWebRequest.Get(url);
+                yield return www.SendWebRequest();
+
+
+                if (www.isNetworkError || www.isHttpError)
+                {
+                    Debug.Log(www.error);
+                }
+                else
+                {
+                    fileText = www.downloadHandler.text;
+                    fileDownloaded = true;
+                    // Show results as text
+                    Debug.Log(www.downloadHandler.text);
+                }
+            }
         }
     }
 }

@@ -15,10 +15,19 @@ namespace GraphVisual
 
         public GameObject LinePrefab;
 
-        private Milestones milestones;
+        private Milestone milestones;
         private List<TaskItem> allTasks;
 
-        public void Init(Milestones milestones)
+        private Axis currentAxis = Axis.y;
+        private int currentSign = 1;
+        
+        private enum Axis
+        {
+            y,
+            z
+        }
+
+        public void Init(Milestone milestones)
         {
             this.milestones = milestones;
             allTasks = new List<TaskItem>();
@@ -31,19 +40,16 @@ namespace GraphVisual
                 Debug.LogWarning("Milestones are empty.");
                 return;
             }
-            
-            foreach (var milestone in milestones.milestones)
-            {
-                var chain = milestone.chain;
 
-                if (chain != null)
-                {
-                    GenerateChain(chain);
-                }
+            var chain = milestones.chain;
+
+            if (chain != null)
+            {
+                GenerateChain(chain);
             }
         }
 
-        private void GenerateChain(MilestoneTask[] milestoneTasks)
+        private void GenerateChain(List<MilestoneTask> milestoneTasks)
         {
             if (milestoneTasks == null)
             {
@@ -63,7 +69,7 @@ namespace GraphVisual
 
                     var startPointPosition = startPoint.transform.position;
 
-                    if (milestoneTask.parentId != null)
+                    if (!string.IsNullOrEmpty(milestoneTask.parentId))
                     {
                         var parentTask = allTasks.Find(x => x.ID == milestoneTask.parentId);
 
@@ -73,9 +79,24 @@ namespace GraphVisual
                             {
                                 if (parentTask.IsFirstChildSet)
                                 {
-                                    startPointPosition += new Vector3(0, distanceBetweenChains, 0);
+                                    var addValue = new Vector3();
+                                    if (currentAxis == Axis.y)
+                                    {
+                                        addValue = new Vector3(0, distanceBetweenChains * currentSign, 0);
+                                        currentAxis = Axis.z;
+                                    }
+                                    else
+                                    {
+                                        addValue = new Vector3(0, 0, distanceBetweenChains * currentSign);
+                                        currentAxis = Axis.y;
+                                    }
+
+                                    currentSign *= -1;
+
+                                    startPointPosition += addValue;
                                     startPoint = Instantiate(pointPrefab, startPointPosition, Quaternion.identity);
                                     CreateLine(parentTask.EndPoint, startPointPosition);
+                                    distanceBetweenChains++;
                                 }
                                 else
                                 {

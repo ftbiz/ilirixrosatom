@@ -1,46 +1,53 @@
 ﻿{
-  "milestonesTasks": [
+  "milestones": [
 	{
 	  "id": "122345",
 	  "name": "Веха 1",
 	  "chain": [
 		{
-		  "name": "1.1"
+		  "id": "1.1",
+		  "parentId": "",
+		  "isMultiParent": false
 		},
 		{
-		  "name": "1.2",
-		  "parent": "1.1",
-		  "is_multi_parent": true
+		  "id": "1.2",
+		  "parentId": "1.1",
+		  "isMultiParent": true
 		},
 		{
-		  "name": "1.3",
-		  "parent": "1.2",
-		  "is_multi_parent": true
+		  "id": "1.3",
+		  "parentId": "1.2",
+		  "isMultiParent": true
 		},
 		{
-		  "name": "1.5",
-		  "parent": "1.3"
+		  "id": "1.5",
+		  "parentId": "1.3",
+		  "isMultiParent": false
 		},
 		{
-		  "name": "1.11",
-		  "parent": "1.5"
+		  "id": "1.11",
+		  "parentId": "1.5",
+		  "isMultiParent": false
 		},
 		{
-		  "name": "1.6",
-		  "parent": "1.3"
+		  "id": "1.6",
+		  "parentId": "1.3",
+		  "isMultiParent": false
 		},
 		{
-		  "name": "1.11",
-		  "parent": "1.6"
+		  "id": "1.11",
+		  "parentId": "1.6",
+		  "isMultiParent": false
 		},
 		{
-		  "name": "1.4",
-		  "parent": "1.2"
+		  "id": "1.4",
+		  "parentId": "1.2",
+		  "isMultiParent": false
 		},
 		{
-		  "name": "1.7",
-		  "parent": "1.4",
-		  "is_multi_parent": true
+		  "id": "1.7",
+		  "parentId": "1.4",
+		  "isMultiParent": true
 		}
 	  ]
 	}

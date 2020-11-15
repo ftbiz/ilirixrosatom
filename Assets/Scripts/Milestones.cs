@@ -1,35 +1,36 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GraphVisual
 {
+    /*[Serializable]
     public class Milestones
     {
-        [JsonProperty("milestonesTasks")]
-        public Milestone[] milestones;
-    }
+        public List<Milestone> milestones;
+    }*/
 
+    [Serializable]
     public class Milestone
     {
-        [JsonProperty("id")]
+        //[JsonProperty("id")]
         public string id;
 
-        [JsonProperty("name")] 
+        //[JsonProperty("name")] 
         public string name;
 
-        [JsonProperty("chain")] 
-        public MilestoneTask[] chain;
-        
+        public List<MilestoneTask> chain;
     }
 
+    [Serializable]
     public class MilestoneTask
     {
-        [JsonProperty("name")] 
+        //[JsonProperty("name")] 
         public string id;
 
-        [JsonProperty("parent")] 
+        //[JsonProperty("parent")] 
         public string parentId;
 
-        [JsonProperty("is_multi_parent")] 
+        //[JsonProperty("is_multi_parent")] 
         public bool isMultiParent;
     }
 }
